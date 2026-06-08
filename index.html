@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elisandra Neves · Consultora em Departamento Pessoal e Assessoria Trabalhista</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0D1B2A;
+    --navy-2: #1A2D42;
+    --accent: #E8A020;
+    --accent-light: #FDF3E0;
+    --green: #1A7A4A;
+    --green-light: #E8F5EE;
+    --red: #C0392B;
+    --red-light: #FDECEA;
+    --gray-1: #F7F6F3;
+    --gray-2: #EDECEA;
+    --gray-3: #C8C6C0;
+    --text: #1A1916;
+    --text-2: #5A5852;
+    --white: #FFFFFF;
+    --radius: 12px;
+    --radius-lg: 20px;
+    --shadow: 0 4px 24px rgba(13,27,42,0.10);
+    --shadow-lg: 0 12px 48px rgba(13,27,42,0.18);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text);
+    background: var(--white);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4 { font-family: 'DM Serif Display', serif; line-height: 1.2; }
+
+  /* ── BARRA TOPO ── */
+  .topbar {
+    background: var(--navy);
+    color: var(--white);
+    text-align: center;
+    font-size: 13px;
+    padding: 10px 20px;
+    letter-spacing: 0.03em;
+  }
+  .topbar span { color: var(--accent); font-weight: 600; }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255,255,255,0.96);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--gray-2);
+    padding: 0 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+  .logo { font-family: 'DM Serif Display', serif; font-weight: 800; font-size: 18px; color: var(--navy);  }
+  .logo span { color: var(--accent); }
+  .nav-cta {
+    background: var(--accent);
+    color: var(--navy);
+    font-family: 'DM Serif Display', serif;
+    font-weight: 700;
+    font-size: 13px;
+    border: none;
+    padding: 10px 22px;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(232,160,32,0.4); }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--navy);
+    color: var(--white);
+    padding: 80px 32px 72px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -120px; right: -120px;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(232,160,32,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-inner { max-width: 860px; margin: 0 auto; position: relative; }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(232,160,32,0.15);
+    border: 1px solid rgba(232,160,32,0.3);
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 100px;
+    margin-bottom: 28px;
+  }
+  .hero-badge::before { content: '●'; font-size: 8px; }
+  .hero h1 {
+    font-size: clamp(36px, 5vw, 60px);
+    font-weight: 800;
+    
+    margin-bottom: 24px;
+    line-height: 1.1;
+  }
+  .hero h1 em { color: var(--accent); font-style: normal; }
+  .hero-sub {
+    font-size: 18px;
+    color: rgba(255,255,255,0.72);
+    max-width: 600px;
+    margin-bottom: 40px;
+    line-height: 1.7;
+  }
+  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--accent);
+    color: var(--navy);
+    font-family: 'DM Serif Display', serif;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 16px 32px;
+    border-radius: 10px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s;
+    letter-spacing: 0.01em;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(232,160,32,0.45); }
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255,255,255,0.8);
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    padding: 16px 20px;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 10px;
+    transition: border-color 0.15s, color 0.15s;
+  }
+  .btn-secondary:hover { border-color: rgba(255,255,255,0.6); color: var(--white); }
+  .hero-trust {
+    margin-top: 52px;
+    padding-top: 36px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .trust-item { display: flex; align-items: center; gap: 10px; }
+  .trust-icon { font-size: 24px; }
+  .trust-text { font-size: 13px; color: rgba(255,255,255,0.7); line-height: 1.4; }
+  .trust-text strong { display: block; color: var(--white); font-size: 15px; font-weight: 600; }
+
+  /* ── SEÇÃO GENÉRICA ── */
+  section { padding: 80px 32px; }
+  .container { max-width: 960px; margin: 0 auto; }
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+    color: var(--navy);
+  }
+  .section-sub { font-size: 17px; color: var(--text-2); max-width: 580px; line-height: 1.7; }
+
+  /* ── DORES ── */
+  .dores { background: var(--gray-1); }
+  .dores-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-top: 48px; }
+  .dor-card {
+    background: var(--white);
+    border: 1px solid var(--gray-2);
+    border-radius: var(--radius);
+    padding: 24px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .dor-icon {
+    min-width: 40px; height: 40px;
+    background: var(--red-light);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+  }
+  .dor-card h4 { font-family: 'DM Serif Display', serif; font-size: 15px; font-weight: 700; margin-bottom: 6px; color: var(--navy); }
+  .dor-card p { font-size: 13px; color: var(--text-2); line-height: 1.6; }
+
+  /* ── COMPARATIVO ── */
+  .compare { background: var(--white); }
+  .compare-table { margin-top: 48px; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--gray-2); box-shadow: var(--shadow); }
+  .compare-header { display: grid; grid-template-columns: 1.5fr 1fr 1fr; background: var(--navy); color: var(--white); }
+  .compare-header div { padding: 18px 24px; font-family: 'DM Serif Display', serif; font-weight: 700; font-size: 14px; }
+  .compare-header div:first-child { font-size: 12px; font-weight: 500; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.06em; }
+  .compare-header .col-bad { color: #ffb3ae; }
+  .compare-header .col-good { color: var(--accent); }
+  .compare-row { display: grid; grid-template-columns: 1.5fr 1fr 1fr; border-top: 1px solid var(--gray-2); }
+  .compare-row:hover { background: var(--gray-1); }
+  .compare-row div { padding: 16px 24px; font-size: 14px; display: flex; align-items: center; gap: 8px; }
+  .compare-row .label { font-weight: 500; color: var(--text); font-size: 14px; }
+  .compare-row .label small { display: block; font-size: 12px; color: var(--text-2); font-weight: 400; margin-top: 2px; }
+  .tag-bad { display: inline-flex; align-items: center; gap: 5px; color: var(--red); font-size: 13px; font-weight: 500; }
+  .tag-good { display: inline-flex; align-items: center; gap: 5px; color: var(--green); font-size: 13px; font-weight: 500; }
+
+  /* ── COMO FUNCIONA ── */
+  .como { background: var(--navy); color: var(--white); }
+  .como .section-title { color: var(--white); }
+  .como .section-sub { color: rgba(255,255,255,0.65); }
+  .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2px; margin-top: 52px; }
+  .step {
+    padding: 36px 28px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: var(--radius);
+    position: relative;
+  }
+  .step-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 48px;
+    font-weight: 800;
+    color: rgba(232,160,32,0.2);
+    line-height: 1;
+    margin-bottom: 16px;
+    letter-spacing: -0.04em;
+  }
+  .step h4 { font-family: 'DM Serif Display', serif; font-size: 16px; font-weight: 700; margin-bottom: 10px; color: var(--white); }
+  .step p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.6; }
+  .step-icon { font-size: 28px; margin-bottom: 12px; display: block; }
+
+  /* ── BENEFÍCIOS ── */
+  .beneficios { background: var(--gray-1); }
+  .benef-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 48px; }
+  .benef-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 28px 24px;
+    border: 1px solid var(--gray-2);
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .benef-card:hover { box-shadow: var(--shadow); transform: translateY(-3px); }
+  .benef-icon { font-size: 32px; margin-bottom: 16px; display: block; }
+  .benef-card h4 { font-family: 'DM Serif Display', serif; font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+  .benef-card p { font-size: 14px; color: var(--text-2); line-height: 1.65; }
+  .benef-tag {
+    display: inline-block;
+    margin-top: 14px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--green);
+    background: var(--green-light);
+    padding: 4px 10px;
+    border-radius: 100px;
+  }
+
+  /* ── OBJEÇÕES ── */
+  .objecoes { background: var(--white); }
+  .obj-list { margin-top: 48px; display: flex; flex-direction: column; gap: 14px; }
+  .obj-item {
+    border: 1px solid var(--gray-2);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .obj-question {
+    padding: 20px 24px;
+    background: var(--gray-1);
+    font-family: 'DM Serif Display', serif;
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--navy);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    user-select: none;
+  }
+  .obj-question::before { content: '?'; min-width: 28px; height: 28px; background: var(--accent-light); color: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 800; }
+  .obj-answer { padding: 20px 24px; font-size: 14px; color: var(--text-2); line-height: 1.7; border-top: 1px solid var(--gray-2); }
+  .obj-answer strong { color: var(--navy); }
+
+  /* ── DEPOIMENTOS ── */
+  .depos { background: var(--navy); color: var(--white); }
+  .depos .section-title { color: var(--white); }
+  .depos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 48px; }
+  .depo-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: var(--radius);
+    padding: 28px 24px;
+  }
+  .depo-stars { color: var(--accent); font-size: 16px; margin-bottom: 14px; letter-spacing: 2px; }
+  .depo-text { font-size: 14px; color: rgba(255,255,255,0.8); line-height: 1.7; margin-bottom: 20px; font-style: italic; }
+  .depo-author { display: flex; align-items: center; gap: 12px; }
+  .depo-avatar {
+    width: 42px; height: 42px; border-radius: 50%;
+    background: rgba(232,160,32,0.2);
+    border: 2px solid rgba(232,160,32,0.3);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'DM Serif Display', serif; font-weight: 800; font-size: 15px; color: var(--accent);
+  }
+  .depo-name { font-weight: 600; font-size: 14px; color: var(--white); }
+  .depo-role { font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 2px; }
+
+  /* ── FORMULÁRIO (CTA PRINCIPAL) ── */
+  .cta-section { background: var(--accent-light); border-top: 3px solid var(--accent); padding: 80px 32px; }
+  .cta-inner { max-width: 760px; margin: 0 auto; }
+  .cta-inner .section-title { color: var(--navy); margin-bottom: 10px; }
+  .cta-inner .section-sub { margin-bottom: 40px; }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-group.full { grid-column: 1 / -1; }
+  .form-group label { font-size: 13px; font-weight: 600; color: var(--navy); }
+  .form-group input, .form-group select {
+    padding: 13px 16px;
+    border: 1.5px solid var(--gray-3);
+    border-radius: 10px;
+    font-size: 14px;
+    font-family: 'DM Sans', sans-serif;
+    background: var(--white);
+    color: var(--text);
+    transition: border-color 0.15s;
+    outline: none;
+  }
+  .form-group input:focus, .form-group select:focus { border-color: var(--navy); }
+  .form-group input::placeholder { color: var(--gray-3); }
+  .form-submit { margin-top: 8px; }
+  .btn-submit {
+    width: 100%;
+    background: var(--navy);
+    color: var(--white);
+    font-family: 'DM Serif Display', serif;
+    font-weight: 700;
+    font-size: 16px;
+    padding: 18px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    letter-spacing: 0.01em;
+    transition: transform 0.15s, box-shadow 0.15s;
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+  }
+  .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(13,27,42,0.3); }
+  .form-trust { margin-top: 16px; display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 12px; color: var(--text-2); }
+  .whatsapp-alt {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+    padding: 14px 24px;
+    background: #25D366;
+    color: var(--white);
+    font-family: 'DM Serif Display', serif;
+    font-weight: 700;
+    font-size: 15px;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: transform 0.15s;
+  }
+  .whatsapp-alt:hover { transform: translateY(-2px); }
+
+  /* ── SELOS ── */
+  .selos {
+    background: var(--white);
+    padding: 40px 32px;
+    border-top: 1px solid var(--gray-2);
+  }
+  .selos-inner { max-width: 960px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 40px; flex-wrap: wrap; }
+  .selo { display: flex; align-items: center; gap: 10px; }
+  .selo-icon { font-size: 28px; }
+  .selo-text { font-size: 12px; color: var(--text-2); line-height: 1.4; }
+  .selo-text strong { display: block; font-size: 13px; color: var(--navy); font-weight: 600; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy);
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    padding: 28px 32px;
+    font-size: 13px;
+  }
+  footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
+  footer a:hover { color: var(--white); }
+
+  /* ── WHATSAPP FLUTUANTE ── */
+  .wpp-float {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    z-index: 999;
+    background: #25D366;
+    color: var(--white);
+    width: 58px; height: 58px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 28px;
+    text-decoration: none;
+    box-shadow: 0 6px 24px rgba(37,211,102,0.5);
+    animation: pulse-wpp 2.5s ease-in-out infinite;
+    transition: transform 0.15s;
+  }
+  .wpp-float:hover { transform: scale(1.1); }
+  @keyframes pulse-wpp {
+    0%, 100% { box-shadow: 0 6px 24px rgba(37,211,102,0.5); }
+    50% { box-shadow: 0 6px 36px rgba(37,211,102,0.75), 0 0 0 8px rgba(37,211,102,0.12); }
+  }
+
+  @media (max-width: 640px) {
+    nav { padding: 0 20px; }
+    section { padding: 60px 20px; }
+    .hero { padding: 60px 20px 56px; }
+    .form-grid { grid-template-columns: 1fr; }
+    .compare-header, .compare-row { grid-template-columns: 1fr 80px 80px; }
+    .compare-row div, .compare-header div { padding: 12px 14px; font-size: 13px; }
+    .hero-trust { gap: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- BARRA TOPO -->
+<div class="topbar">
+  🔒 Seus dados protegidos pela LGPD &nbsp;·&nbsp; <span>Diagnóstico gratuito em até 24h</span> &nbsp;·&nbsp; Migração sem caos no primeiro mês
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">Elisandra <span>Neves</span></div>
+  <a href="#formulario" class="nav-cta">→ Diagnóstico Gratuito</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">Departamento Pessoal Especializado</div>
+    <h1>Sua folha de pagamento <em>correta todo mês</em> — sem processos trabalhistas, sem multas.</h1>
+    <p class="hero-sub">Terceirize o DP da sua empresa para quem realmente entende de CLT, eSocial e FGTS Digital. Você foca no negócio. A gente cuida do resto.</p>
+    <div class="hero-actions">
+      <a href="#formulario" class="btn-primary">
+        📋 Solicitar diagnóstico gratuito
+      </a>
+      <a href="#como-funciona" class="btn-secondary">
+        Ver como funciona →
+      </a>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-item">
+        <div class="trust-icon">🏆</div>
+        <div class="trust-text"><strong>+15 anos</strong>de experiência em DP</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">📊</div>
+        <div class="trust-text"><strong>100% digital</strong>acesso 24h aos dados</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">⚖️</div>
+        <div class="trust-text"><strong>Conformidade</strong>eSocial e FGTS Digital</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">🔒</div>
+        <div class="trust-text"><strong>LGPD</strong>dados protegidos</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DORES -->
+<section class="dores">
+  <div class="container">
+    <div class="section-label">O problema que você enfrenta</div>
+    <h2 class="section-title">Esses erros estão custando caro para a sua empresa</h2>
+    <p class="section-sub">Cada mês com DP interno gerenciado de forma inadequada é um risco acumulado que pode virar processo amanhã.</p>
+    <div class="dores-grid">
+      <div class="dor-card">
+        <div class="dor-icon">⚠️</div>
+        <div>
+          <h4>Multas no eSocial e FGTS Digital</h4>
+          <p>Atraso de 1 dia na competência já gera multa automática de até R$ 2.000 por funcionário. Sem monitoramento diário, é impossível evitar.</p>
+        </div>
+      </div>
+      <div class="dor-card">
+        <div class="dor-icon">🧮</div>
+        <div>
+          <h4>Erros de cálculo acumulando passivos</h4>
+          <p>Férias, 13º, horas extras e rescisões calculadas errado por meses acumulam passivos trabalhistas silenciosos que aparecem só na Justiça do Trabalho.</p>
+        </div>
+      </div>
+      <div class="dor-card">
+        <div class="dor-icon">👤</div>
+        <div>
+          <h4>Dependência de uma única pessoa</h4>
+          <p>Se o analista de DP sair, pedir licença ou faltar, toda a operação de folha para. Esse risco operacional pode comprometer o pagamento dos funcionários.</p>
+        </div>
+      </div>
+      <div class="dor-card">
+        <div class="dor-icon">💸</div>
+        <div>
+          <h4>Custo fixo alto com equipe interna</h4>
+          <p>Um analista CLT custa entre R$ 4.000 e R$ 7.000/mês com encargos — sem contar ferramentas, treinamentos e gestão. É um custo que pode ser reduzido.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARATIVO -->
+<section class="compare">
+  <div class="container">
+    <div class="section-label">Por que terceirizar</div>
+    <h2 class="section-title">DP interno versus DP terceirizado</h2>
+    <p class="section-sub">Uma comparação direta para você tomar a decisão com clareza.</p>
+    <div class="compare-table">
+      <div class="compare-header">
+        <div>Critério</div>
+        <div class="col-bad">DP Interno</div>
+        <div class="col-good">DP Terceirizado</div>
+      </div>
+      <div class="compare-row">
+        <div class="label">Custo mensal<small>Salário + encargos + ferramentas</small></div>
+        <div class="tag-bad">❌ R$ 5–12k</div>
+        <div class="tag-good">✅ Menor e fixo</div>
+      </div>
+      <div class="compare-row">
+        <div class="label">Risco trabalhista<small>Passivos e processos judiciais</small></div>
+        <div class="tag-bad">❌ Alto</div>
+        <div class="tag-good">✅ Zero</div>
+      </div>
+      <div class="compare-row">
+        <div class="label">Conformidade eSocial<small>Entregas no prazo e sem erros</small></div>
+        <div class="tag-bad">❌ Variável</div>
+        <div class="tag-good">✅ Garantida</div>
+      </div>
+      <div class="compare-row">
+        <div class="label">Auditoria contínua<small>Revisão proativa dos cálculos</small></div>
+        <div class="tag-bad">❌ Inexistente</div>
+        <div class="tag-good">✅ Mensal</div>
+      </div>
+      <div class="compare-row">
+        <div class="label">Risco de dependência<small>Parar quando 1 pessoa falta</small></div>
+        <div class="tag-bad">❌ Crítico</div>
+        <div class="tag-good">✅ Eliminado</div>
+      </div>
+      <div class="compare-row">
+        <div class="label">Acesso aos dados<small>Portal 24h para gestores e colaboradores</small></div>
+        <div class="tag-bad">❌ Limitado</div>
+        <div class="tag-good">✅ Total — 24h</div>
+      </div>
+      <div class="compare-row">
+        <div class="label">Tempo do RH<small>Horas gastas em burocracia vs estratégia</small></div>
+        <div class="tag-bad">❌ Consumido</div>
+        <div class="tag-good">✅ Liberado</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMO FUNCIONA -->
+<section class="como" id="como-funciona">
+  <div class="container">
+    <div class="section-label" style="color:var(--accent)">O processo</div>
+    <h2 class="section-title">Da contratação ao primeiro mês — sem caos</h2>
+    <p class="section-sub">Migração estruturada, segura e sem impacto na operação da sua empresa.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <span class="step-icon">🔍</span>
+        <h4>Diagnóstico gratuito</h4>
+        <p>Analisamos o DP atual da sua empresa em até 24h e identificamos riscos, inconsistências e oportunidades de economia.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <span class="step-icon">📁</span>
+        <h4>Migração estruturada</h4>
+        <p>Fazemos a transferência completa dos dados, históricos e arquivos com protocolo seguro. Você não precisa fazer nada.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <span class="step-icon">⚙️</span>
+        <h4>Operação assumida</h4>
+        <p>A partir do primeiro mês, toda a folha, rescisões, admissões, eSocial e FGTS passam a ser responsabilidade nossa.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <span class="step-icon">📊</span>
+        <h4>Relatórios e acesso</h4>
+        <p>Você tem acesso completo via portal online a todos os dados, holerites e guias. Transparência total — 24 horas por dia.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFÍCIOS -->
+<section class="beneficios">
+  <div class="container">
+    <div class="section-label">O que você ganha</div>
+    <h2 class="section-title">Mais do que uma folha correta — segurança total</h2>
+    <p class="section-sub">Cada entrega é auditada e garantida por uma especialista com mais de 15 anos no mercado.</p>
+    <div class="benef-grid">
+      <div class="benef-card">
+        <span class="benef-icon">📋</span>
+        <h4>Fechamento de folha mensal</h4>
+        <p>Processamento completo da folha de pagamento com cálculo de todos os eventos: horas extras, faltas, adicionais, benefícios e descontos.</p>
+        <span class="benef-tag">✓ Todo mês, sem atraso</span>
+      </div>
+      <div class="benef-card">
+        <span class="benef-icon">🔢</span>
+        <h4>Cálculos de rescisão</h4>
+        <p>Rescisões calculadas com precisão: saldo de salário, férias proporcionais, 13º proporcional, FGTS e multa — tudo dentro do prazo legal.</p>
+        <span class="benef-tag">✓ Zero risco de passivo</span>
+      </div>
+      <div class="benef-card">
+        <span class="benef-icon">📡</span>
+        <h4>eSocial e FGTS Digital</h4>
+        <p>Transmissão de todos os eventos do eSocial no prazo, com monitoramento de pendências e retificações quando necessário.</p>
+        <span class="benef-tag">✓ Conformidade garantida</span>
+      </div>
+      <div class="benef-card">
+        <span class="benef-icon">📝</span>
+        <h4>Admissões e demissões</h4>
+        <p>Gestão completa do processo: contrato de trabalho, CTPS digital, exames admissionais, homologação e toda a documentação legal.</p>
+        <span class="benef-tag">✓ Documentação 100%</span>
+      </div>
+      <div class="benef-card">
+        <span class="benef-icon">📑</span>
+        <h4>Relatórios gerenciais</h4>
+        <p>Relatórios claros de custo com pessoal, provisões de 13º e férias, e indicadores de folha — prontos para a diretoria.</p>
+        <span class="benef-tag">✓ Decisão baseada em dados</span>
+      </div>
+      <div class="benef-card">
+        <span class="benef-icon">🛡️</span>
+        <h4>Assessoria trabalhista</h4>
+        <p>Orientação em dúvidas sobre CLT, convenções coletivas, jornadas especiais e boas práticas para prevenir processos trabalhistas.</p>
+        <span class="benef-tag">✓ Consultoria inclusa</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OBJEÇÕES -->
+<section class="objecoes">
+  <div class="container">
+    <div class="section-label">Dúvidas frequentes</div>
+    <h2 class="section-title">Respostas honestas para as principais objeções</h2>
+    <div class="obj-list">
+      <div class="obj-item">
+        <div class="obj-question">"Vou perder o controle das informações dos meus funcionários?"</div>
+        <div class="obj-answer">
+          <strong>Não.</strong> Você mantém acesso total via portal online, 24 horas por dia. Todos os holerites, guias, relatórios e histórico ficam disponíveis para o RH e para cada colaborador individualmente. O controle aumenta, não diminui — você passa a ter relatórios que provavelmente nunca teve com o DP interno.
+        </div>
+      </div>
+      <div class="obj-item">
+        <div class="obj-question">"E a segurança dos dados? E a LGPD?"</div>
+        <div class="obj-answer">
+          <strong>Tratamos seus dados com rigor total.</strong> Operamos em conformidade com a Lei Geral de Proteção de Dados (LGPD), com contrato de confidencialidade assinado, servidores com criptografia e acesso restrito por perfil de usuário. Suas informações salariais jamais são compartilhadas com terceiros.
+        </div>
+      </div>
+      <div class="obj-item">
+        <div class="obj-question">"A migração não vai causar caos no primeiro mês?"</div>
+        <div class="obj-answer">
+          <strong>Esse é nosso maior diferencial.</strong> Usamos um protocolo de migração estruturada em 3 fases: levantamento completo, importação auditada e validação cruzada antes do primeiro fechamento. Nenhum funcionário deixa de receber e nenhuma guia atrasa. A transição é invisível para a operação.
+        </div>
+      </div>
+      <div class="obj-item">
+        <div class="obj-question">"Como vou saber o que está acontecendo com a minha folha?"</div>
+        <div class="obj-answer">
+          <strong>Com mais transparência do que hoje.</strong> Você recebe relatórios mensais de custo com pessoal, provisões e eventos relevantes. Além disso, tem atendimento direto via WhatsApp para qualquer dúvida — sem depender de e-mail ou ticket.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEPOIMENTOS -->
+<section class="depos">
+  <div class="container">
+    <div class="section-label" style="color:var(--accent)">Quem já terceirizou</div>
+    <h2 class="section-title">O que os clientes dizem</h2>
+    <div class="depos-grid">
+      <div class="depo-card">
+        <div class="depo-stars">★★★★★</div>
+        <p class="depo-text">"Em 3 anos com DP interno, nunca tivemos um relatório claro de custo com pessoal. Depois de 2 meses terceirizando, já tomamos decisões que economizaram mais de R$ 30 mil."</p>
+        <div class="depo-author">
+          <div class="depo-avatar">MR</div>
+          <div>
+            <div class="depo-name">Marcos R.</div>
+            <div class="depo-role">CEO · Empresa de logística · 45 funcionários</div>
+          </div>
+        </div>
+      </div>
+      <div class="depo-card">
+        <div class="depo-stars">★★★★★</div>
+        <p class="depo-text">"Estava com medo de perder o controle, mas foi o contrário. Hoje tenho acesso a tudo via portal e meu RH parou de gastar 3 semanas por mês só com burocracia."</p>
+        <div class="depo-author">
+          <div class="depo-avatar">CF</div>
+          <div>
+            <div class="depo-name">Carla F.</div>
+            <div class="depo-role">Gestora de RH · Rede de clínicas · 80 funcionários</div>
+          </div>
+        </div>
+      </div>
+      <div class="depo-card">
+        <div class="depo-stars">★★★★★</div>
+        <p class="depo-text">"A migração foi mais fácil do que eu imaginava. Em 15 dias estava tudo funcionando, sem atraso na folha e sem nenhum erro. Não volto para o DP interno por nada."</p>
+        <div class="depo-author">
+          <div class="depo-avatar">TP</div>
+          <div>
+            <div class="depo-name">Thiago P.</div>
+            <div class="depo-role">Diretor Financeiro · Construtora · 120 funcionários</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORMULÁRIO -->
+<section class="cta-section" id="formulario">
+  <div class="cta-inner">
+    <div class="section-label">Solicite agora</div>
+    <h2 class="section-title">Diagnóstico gratuito do seu DP em até 24h</h2>
+    <p class="section-sub">Preencha o formulário e receba uma análise personalizada sem compromisso. Identificamos os riscos e o potencial de economia da sua operação atual.</p>
+
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="nome">Nome completo *</label>
+        <input type="text" id="nome" placeholder="Seu nome">
+      </div>
+      <div class="form-group">
+        <label for="cargo">Cargo *</label>
+        <select id="cargo">
+          <option value="">Selecione seu cargo</option>
+          <option>CEO / Sócio / Proprietário</option>
+          <option>Diretor Financeiro (CFO)</option>
+          <option>Gerente / Diretor de RH</option>
+          <option>Gerente Administrativo</option>
+          <option>Outro</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="empresa">Nome da empresa *</label>
+        <input type="text" id="empresa" placeholder="Razão social ou nome fantasia">
+      </div>
+      <div class="form-group">
+        <label for="funcionarios">Nº de funcionários *</label>
+        <select id="funcionarios">
+          <option value="">Quantos funcionários?</option>
+          <option>10 a 30 funcionários</option>
+          <option>31 a 80 funcionários</option>
+          <option>81 a 200 funcionários</option>
+          <option>Mais de 200 funcionários</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="telefone">WhatsApp *</label>
+        <input type="tel" id="telefone" placeholder="(00) 00000-0000">
+      </div>
+      <div class="form-group">
+        <label for="email">E-mail corporativo *</label>
+        <input type="email" id="email" placeholder="seu@empresa.com.br">
+      </div>
+    </div>
+
+    <div class="form-submit">
+      <button class="btn-submit" onclick="handleSubmit()">
+        📋 Quero meu diagnóstico gratuito
+      </button>
+    </div>
+    <div class="form-trust">
+      🔒 Seus dados são protegidos pela LGPD e nunca serão compartilhados com terceiros.
+    </div>
+
+    <div style="text-align:center; margin-top:24px; color: var(--text-2); font-size:13px;">
+      — ou prefere falar diretamente? —
+    </div>
+    <a href="https://wa.me/5514996307728?text=Olá!%20Gostaria%20de%20um%20diagnóstico%20gratuito%20do%20meu%20Departamento%20Pessoal." class="whatsapp-alt">
+      💬 Falar agora pelo WhatsApp
+    </a>
+  </div>
+</section>
+
+<!-- SELOS -->
+<div class="selos">
+  <div class="selos-inner">
+    <div class="selo">
+      <div class="selo-icon">🔒</div>
+      <div class="selo-text"><strong>LGPD Compliant</strong>Dados protegidos por lei</div>
+    </div>
+    <div class="selo">
+      <div class="selo-icon">📡</div>
+      <div class="selo-text"><strong>eSocial Certificado</strong>Todas as competências em dia</div>
+    </div>
+    <div class="selo">
+      <div class="selo-icon">⚖️</div>
+      <div class="selo-text"><strong>Assessoria Trabalhista</strong>Especialista em CLT e CCT</div>
+    </div>
+    <div class="selo">
+      <div class="selo-icon">🏆</div>
+      <div class="selo-text"><strong>+15 anos no mercado</strong>Histórico comprovado</div>
+    </div>
+    <div class="selo">
+      <div class="selo-icon">📊</div>
+      <div class="selo-text"><strong>100% Digital</strong>Acesso 24h via portal</div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 Elisandra Neves · Consultora em Departamento Pessoal e Assessoria Trabalhista</p>
+  <p style="margin-top:6px"><a href="#">Política de Privacidade</a> · <a href="#">LGPD</a> · <a href="#formulario">Contato</a></p>
+</footer>
+
+<!-- WHATSAPP FLUTUANTE -->
+<a href="https://wa.me/5514996307728?text=Olá!%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20diagnóstico%20gratuito%20do%20meu%20DP." class="wpp-float" title="Falar pelo WhatsApp">
+  💬
+</a>
+
+<script>
+function handleSubmit() {
+  const nome = document.getElementById('nome').value.trim();
+  const cargo = document.getElementById('cargo').value;
+  const empresa = document.getElementById('empresa').value.trim();
+  const func = document.getElementById('funcionarios').value;
+  const tel = document.getElementById('telefone').value.trim();
+  const email = document.getElementById('email').value.trim();
+
+  if (!nome || !cargo || !empresa || !func || !tel || !email) {
+    alert('Por favor, preencha todos os campos obrigatórios.');
+    return;
+  }
+
+  const msg = encodeURIComponent(
+    `Olá! Me chamo ${nome}, sou ${cargo} na empresa ${empresa}.\n` +
+    `Temos ${func} e gostaria de solicitar um diagnóstico gratuito do nosso Departamento Pessoal.\n` +
+    `E-mail: ${email}`
+  );
+
+  window.open(`https://wa.me/5514996307728?text=${msg}`, '_blank');
+}
+
+// Scroll suave para âncoras
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+</body>
+</html>
